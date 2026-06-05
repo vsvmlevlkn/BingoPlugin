@@ -1,0 +1,20 @@
+name: BingoPlugin
+version: '${project.version}'
+main: com.bingo.BingoPlugin
+api-version: '1.20'
+description: Competitive Team Bingo 5x5 for Minecraft
+authors: [BingoTeam]
+
+commands:
+  bingo:
+    description: Main Bingo command
+    usage: /bingo <subcommand>
+    permission: bingo.use
+
+permissions:
+  bingo.use:
+    description: Allows using basic bingo commands
+    default: true
+  bingo.admin:
+    description: Allows using admin bingo commands
+    default: op

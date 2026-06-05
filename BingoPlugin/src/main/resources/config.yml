@@ -1,0 +1,25 @@
+# BingoPlugin Configuration
+
+# Maximum point difference between team cards
+max-point-difference: 5
+
+# Minimum and maximum Nether items per card
+nether-items-min: 3
+nether-items-max: 5
+
+# Team size
+team-size: 2
+
+# Messages
+messages:
+  game-start: "&aLa partida de Bingo ha comenzado! &eConseguid los objetos de vuestro cartón!"
+  game-stop: "&cLa partida ha sido detenida."
+  game-reload: "&aConfiguración recargada."
+  game-reroll: "&eNuevos cartones generados!"
+  team-joined: "&aOs habéis unido al equipo &e%team%&a!"
+  team-full: "&cEse equipo ya está completo."
+  no-game: "&cNo hay ninguna partida activa."
+  game-already-running: "&cYa hay una partida en curso."
+  item-completed: "&a¡El equipo &e%team% &aconsiguió &e%item%&a!"
+  bingo-win: "&6&l¡BINGO! &eEl equipo &6%team% &eha ganado la partida!"
+  map-given: "&aHabéis recibido vuestro mapa de Bingo."
