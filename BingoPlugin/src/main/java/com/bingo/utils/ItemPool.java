@@ -78,8 +78,6 @@ public class ItemPool {
         add(Material.COOKED_SALMON,    "Salmón asado",   2);
         add(Material.RABBIT_FOOT,      "Pata de conejo", 2);
         add(Material.PUFFERFISH,       "Pez globo",      2);
-        add(Material.NAUTILUS_SHELL,   "Concha de nautilo",2);
-
         // ─────────────────────────────────────────────────
         // DIFFICULTY 3 – Media
         // ─────────────────────────────────────────────────
@@ -129,21 +127,20 @@ public class ItemPool {
         add(Material.DIAMOND_HELMET,   "Casco de diamante",4);
         add(Material.DIAMOND_LEGGINGS, "Pantalones de diamante",4);
         add(Material.DIAMOND_BOOTS,    "Botas de diamante",4);
-        add(Material.TOTEM_OF_UNDYING, "Tótem de la inmortalidad",4);
-        add(Material.TRIDENT,          "Tridente",       4); // farmable from drowned
-        add(Material.HEART_OF_THE_SEA, "Corazón del mar",4);
-        add(Material.CONDUIT,          "Conductor",      4);
         add(Material.TURTLE_SCUTE,     "Escama de tortuga",4);
-        add(Material.TURTLE_HELMET,    "Casco de tortuga",4);
-        add(Material.PRISMARINE,       "Prismarina",     4);
-        add(Material.PRISMARINE_BRICKS,"Ladrillos de prismarina",4);
-        add(Material.DARK_PRISMARINE,  "Prismarina oscura",4);
-        add(Material.SEA_LANTERN,      "Linterna del mar",4);
 
         // ─────────────────────────────────────────────────
         // DIFFICULTY 5 – Muy difícil
         // ─────────────────────────────────────────────────
         add(Material.ENDER_EYE,        "Ojo de Ender",   5);
+        add(Material.TURTLE_HELMET,    "Casco de tortuga",5);
+        add(Material.PRISMARINE,       "Prismarina",     5);
+        add(Material.PRISMARINE_BRICKS,"Ladrillos de prismarina",5);
+        add(Material.DARK_PRISMARINE,  "Prismarina oscura",5);
+        add(Material.SEA_LANTERN,      "Linterna del mar",5);
+        add(Material.NAUTILUS_SHELL,   "Concha de nautilo",5);
+
+        add(Material.HEART_OF_THE_SEA, "Corazón del mar",4);
     }
 
     private static void add(Material mat, String name, int diff) {
