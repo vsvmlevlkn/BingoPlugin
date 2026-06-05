@@ -25,4 +25,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: BingoPlugin
-          path: target/BingoPlugin-1.0.0.jar
+          path: BingoPlugin/target/BingoPlugin-1.0.0.jar
