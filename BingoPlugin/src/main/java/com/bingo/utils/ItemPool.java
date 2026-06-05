@@ -109,7 +109,6 @@ public class ItemPool {
         add(Material.MAGMA_CREAM,      "Crema de magma", 3, true);
         add(Material.FIRE_CHARGE,      "Bola de fuego",  3, true);
         add(Material.LEAD,             "Cuerda",         3);
-        add(Material.HORSE_ARMOR_IRON, "Armadura de hierro para caballo",3);
 
         // ─────────────────────────────────────────────────
         // DIFFICULTY 4 – Difícil
@@ -134,22 +133,16 @@ public class ItemPool {
         add(Material.TRIDENT,          "Tridente",       4); // farmable from drowned
         add(Material.HEART_OF_THE_SEA, "Corazón del mar",4);
         add(Material.CONDUIT,          "Conductor",      4);
-        add(Material.SCUTE,            "Escama",         4);
+        add(Material.TURTLE_SCUTE,     "Escama de tortuga",4);
         add(Material.TURTLE_HELMET,    "Casco de tortuga",4);
         add(Material.PRISMARINE,       "Prismarina",     4);
         add(Material.PRISMARINE_BRICKS,"Ladrillos de prismarina",4);
         add(Material.DARK_PRISMARINE,  "Prismarina oscura",4);
         add(Material.SEA_LANTERN,      "Linterna del mar",4);
-        add(Material.NETHER_STAR,      "Estrella del Nether",5, true); // placeholder, moved
 
         // ─────────────────────────────────────────────────
         // DIFFICULTY 5 – Muy difícil
         // ─────────────────────────────────────────────────
-        add(Material.DIAMOND_BLOCK,    "Bloque de diamante",5);
-        add(Material.EMERALD_BLOCK,    "Bloque de esmeralda",5);
-        add(Material.WITHER_SKELETON_SKULL,"Cabeza de Wither Skeleton",5, true);
-        add(Material.NETHER_STAR,      "Estrella del Nether",5, true);
-        add(Material.BEACON,           "Faro (Beacon)",  5, true);
         add(Material.ENDER_EYE,        "Ojo de Ender",   5);
     }
 
