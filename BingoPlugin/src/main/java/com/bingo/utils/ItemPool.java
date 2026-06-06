@@ -47,6 +47,68 @@ public class ItemPool {
         add(Material.RABBIT_HIDE,      "Piel de conejo",1);
         add(Material.RABBIT,           "Conejo crudo",  1);
         add(Material.COOKED_RABBIT,    "Conejo asado",  1);
+        // Abeto (Spruce)
+add(Material.SPRUCE_SLAB,             "Losa de abeto",             1);
+add(Material.SPRUCE_STAIRS,           "Escalera de abeto",         1);
+add(Material.SPRUCE_DOOR,             "Puerta de abeto",           1);
+add(Material.SPRUCE_TRAPDOOR,         "Trampilla de abeto",        1);
+add(Material.SPRUCE_BUTTON,           "Botón de abeto",            1);
+add(Material.SPRUCE_PRESSURE_PLATE,   "Placa de abeto",            1);
+// Jungla
+add(Material.JUNGLE_SLAB,             "Losa de jungla",            1);
+add(Material.JUNGLE_STAIRS,           "Escalera de jungla",        1);
+add(Material.JUNGLE_DOOR,             "Puerta de jungla",          1);
+add(Material.JUNGLE_TRAPDOOR,         "Trampilla de jungla",       1);
+add(Material.JUNGLE_BUTTON,           "Botón de jungla",           1);
+add(Material.JUNGLE_PRESSURE_PLATE,   "Placa de jungla",           1);
+// Acacia
+add(Material.ACACIA_SLAB,             "Losa de acacia",            1);
+add(Material.ACACIA_STAIRS,           "Escalera de acacia",        1);
+add(Material.ACACIA_DOOR,             "Puerta de acacia",          1);
+add(Material.ACACIA_TRAPDOOR,         "Trampilla de acacia",       1);
+add(Material.ACACIA_BUTTON,           "Botón de acacia",           1);
+add(Material.ACACIA_PRESSURE_PLATE,   "Placa de acacia",           1);
+// Roble Oscuro
+add(Material.DARK_OAK_SLAB,           "Losa de roble oscuro",      1);
+add(Material.DARK_OAK_STAIRS,         "Escalera de roble oscuro",  1);
+add(Material.DARK_OAK_DOOR,           "Puerta de roble oscuro",    1);
+add(Material.DARK_OAK_TRAPDOOR,       "Trampilla de roble oscuro", 1);
+add(Material.DARK_OAK_BUTTON,         "Botón de roble oscuro",     1);
+add(Material.DARK_OAK_PRESSURE_PLATE, "Placa de roble oscuro",     1);
+// Manglar
+add(Material.MANGROVE_SLAB,           "Losa de manglar",           2);
+add(Material.MANGROVE_STAIRS,         "Escalera de manglar",       2);
+add(Material.MANGROVE_DOOR,           "Puerta de manglar",         2);
+add(Material.MANGROVE_TRAPDOOR,       "Trampilla de manglar",      2);
+add(Material.MANGROVE_BUTTON,         "Botón de manglar",          2);
+add(Material.MANGROVE_PRESSURE_PLATE, "Placa de manglar",          2);
+// Cerezo
+add(Material.CHERRY_SLAB,             "Losa de cerezo",            3);
+add(Material.CHERRY_STAIRS,           "Escalera de cerezo",        3);
+add(Material.CHERRY_DOOR,             "Puerta de cerezo",          3);
+add(Material.CHERRY_TRAPDOOR,         "Trampilla de cerezo",       3);
+add(Material.CHERRY_BUTTON,           "Botón de cerezo",           3);
+add(Material.CHERRY_PRESSURE_PLATE,   "Placa de cerezo",           3);
+// Bambú
+add(Material.BAMBOO_SLAB,             "Losa de bambú",             2);
+add(Material.BAMBOO_STAIRS,           "Escalera de bambú",         2);
+add(Material.BAMBOO_DOOR,             "Puerta de bambú",           2);
+add(Material.BAMBOO_BUTTON,           "Botón de bambú",            2);
+add(Material.BAMBOO_PRESSURE_PLATE,   "Placa de bambú",            2);
+// Carmesí (Nether)
+add(Material.CRIMSON_SLAB,            "Losa carmesí",              2);
+add(Material.CRIMSON_STAIRS,          "Escalera carmesí",          2);
+add(Material.CRIMSON_DOOR,            "Puerta carmesí",            2);
+add(Material.CRIMSON_TRAPDOOR,        "Trampilla carmesí",         2);
+add(Material.CRIMSON_BUTTON,          "Botón carmesí",             2);
+add(Material.CRIMSON_PRESSURE_PLATE,  "Placa carmesí",             2);
+// Distorsionado (Nether)
+add(Material.WARPED_SLAB,             "Losa distorsionada",        2);
+add(Material.WARPED_STAIRS,           "Escalera distorsionada",    2);
+add(Material.WARPED_DOOR,             "Puerta distorsionada",      2);
+add(Material.WARPED_TRAPDOOR,         "Trampilla distorsionada",   2);
+add(Material.WARPED_BUTTON,           "Botón distorsionado",       2);
+add(Material.WARPED_PRESSURE_PLATE,   "Placa distorsionada",       2);
 
         // ─────────────────────────────────────────────────
         // DIFFICULTY 2 – Fácil
