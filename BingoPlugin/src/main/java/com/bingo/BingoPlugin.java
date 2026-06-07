@@ -38,7 +38,7 @@ public class BingoPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        if (gameManager != null && gameManager.isRunning()) {
+        if (gameManager != null) {
             gameManager.stopGame();
         }
         getLogger().info("BingoPlugin disabled.");
