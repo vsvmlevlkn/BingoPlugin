@@ -52,6 +52,5 @@ public class BingoPlugin extends JavaPlugin {
     public TeamManager getTeamManager() {
         return teamManager;
     }
-saveDefaultConfig();
-TextureLoader.load(new java.io.File(".")); // ← agrega esta línea
+
 }
