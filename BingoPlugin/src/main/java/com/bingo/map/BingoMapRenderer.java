@@ -1,7 +1,7 @@
 package com.bingo.map;
 
-import com.bingo.model.BingoCard;
-import com.bingo.model.BingoItem;
+import com.bingo.models.BingoCard;
+import com.bingo.models.BingoItem;
 import com.bingo.utils.TextureLoader;
 import org.bukkit.entity.Player;
 import org.bukkit.map.MapCanvas;
@@ -13,14 +13,21 @@ import java.awt.image.BufferedImage;
 
 public class BingoMapRenderer extends MapRenderer {
     private final BingoCard card;
+    private boolean dirty = true;
 
     public BingoMapRenderer(BingoCard card) {
         this.card = card;
     }
 
+    public void markDirty() {
+        this.dirty = true;
+    }
+
     @Override
     public void render(MapView view, MapCanvas canvas, Player player) {
-        // Fondo oscuro
+        if (!dirty) return;
+        dirty = false;
+
         for (int x = 0; x < 128; x++)
             for (int y = 0; y < 128; y++)
                 canvas.setPixel(x, y, (byte) 119);
@@ -36,13 +43,11 @@ public class BingoMapRenderer extends MapRenderer {
                 BingoItem item = card.getItem(row, col);
                 boolean checked = card.isChecked(row, col);
 
-                // Fondo de celda
                 byte bgColor = checked ? (byte) 28 : (byte) 8;
                 for (int dx = 1; dx < cellSize - 1; dx++)
                     for (int dy = 1; dy < cellSize - 1; dy++)
                         canvas.setPixel(x + dx, y + dy, bgColor);
 
-                // Borde
                 for (int dx = 0; dx < cellSize; dx++) {
                     canvas.setPixel(x + dx, y, (byte) 119);
                     canvas.setPixel(x + dx, y + cellSize - 1, (byte) 119);
@@ -53,19 +58,16 @@ public class BingoMapRenderer extends MapRenderer {
                 }
 
                 if (item != null) {
-                    // Dibujar icono del item
                     BufferedImage texture = TextureLoader.getTexture(item.getMaterial());
                     if (texture != null) {
                         canvas.drawImage(x + 4, y + 4, texture);
                     } else {
-                        // Sin textura: cuadro de color por dificultad
                         byte c = diffColor(item.getDifficulty());
                         for (int dx = 4; dx < cellSize - 4; dx++)
                             for (int dy = 4; dy < cellSize - 4; dy++)
                                 canvas.setPixel(x + dx, y + dy, c);
                     }
 
-                    // Tilde verde cuando está conseguido
                     if (checked) {
                         canvas.setPixel(x + 2, y + 5, (byte) 34);
                         canvas.setPixel(x + 3, y + 6, (byte) 34);
@@ -77,7 +79,6 @@ public class BingoMapRenderer extends MapRenderer {
             }
         }
 
-        // Título arriba
         canvas.drawText(38, 1, MinecraftFont.Font, "§fBINGO");
     }
 
