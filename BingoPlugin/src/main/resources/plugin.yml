@@ -1,7 +1,7 @@
 name: BingoPlugin
 version: '${project.version}'
 main: com.bingo.BingoPlugin
-api-version: '1.20'
+api-version: '26.1'
 description: Competitive Team Bingo 5x5 for Minecraft
 authors: [BingoTeam]
 
