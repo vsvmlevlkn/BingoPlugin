@@ -6,7 +6,8 @@ import com.bingo.listeners.PlayerListener;
 import com.bingo.managers.GameManager;
 import com.bingo.managers.TeamManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
+saveDefaultConfig();
+TextureLoader.load(new java.io.File(".")); // ← agrega esta línea
 public class BingoPlugin extends JavaPlugin {
 
     private static BingoPlugin instance;
