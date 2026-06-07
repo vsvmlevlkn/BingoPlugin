@@ -1,4 +1,4 @@
-package com.bingo.renderer;
+package com.bingo.map;
 
 import com.bingo.model.BingoCard;
 import com.bingo.model.BingoItem;
