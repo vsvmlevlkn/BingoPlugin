@@ -1,94 +1,84 @@
-package com.bingo.map;
+package com.bingo.models;
 
-import com.bingo.models.BingoCard;
-import com.bingo.models.BingoItem;
-import com.bingo.utils.TextureLoader;
-import org.bukkit.entity.Player;
-import org.bukkit.map.MapCanvas;
-import org.bukkit.map.MapRenderer;
-import org.bukkit.map.MapView;
-import org.bukkit.map.MinecraftFont;
+public class BingoCard {
+    public static final int SIZE = 5;
+    private final BingoItem[][] items;
+    private final boolean[][] completed;
+    private final String teamName;
+    private int totalPoints;
 
-import java.awt.image.BufferedImage;
-
-public class BingoMapRenderer extends MapRenderer {
-    private final BingoCard card;
-    private boolean dirty = true;
-
-    public BingoMapRenderer(BingoCard card) {
-        this.card = card;
+    public BingoCard(String teamName, BingoItem[][] items) {
+        this.teamName = teamName;
+        this.items = items;
+        this.completed = new boolean[SIZE][SIZE];
+        calculateTotalPoints();
     }
 
-    public void markDirty() {
-        this.dirty = true;
+    private void calculateTotalPoints() {
+        totalPoints = 0;
+        for (int r = 0; r < SIZE; r++)
+            for (int c = 0; c < SIZE; c++)
+                if (items[r][c] != null)
+                    totalPoints += items[r][c].getDifficulty();
     }
 
-    @Override
-    public void render(MapView view, MapCanvas canvas, Player player) {
-        if (!dirty) return;
-        dirty = false;
+    public boolean setCompleted(int row, int col, boolean value) {
+        if (completed[row][col] == value) return false;
+        completed[row][col] = value;
+        return true;
+    }
 
-        for (int x = 0; x < 128; x++)
-            for (int y = 0; y < 128; y++)
-                canvas.setPixel(x, y, (byte) 119);
+    public boolean isCompleted(int row, int col) {
+        return completed[row][col];
+    }
 
-        int cellSize = 24;
-        int offsetX = 4;
-        int offsetY = 8;
+    public BingoItem getItem(int row, int col) { return items[row][col]; }
+    public BingoItem[][] getItems() { return items; }
+    public boolean[][] getCompleted() { return completed; }
+    public String getTeamName() { return teamName; }
+    public int getTotalPoints() { return totalPoints; }
 
-        for (int row = 0; row < 5; row++) {
-            for (int col = 0; col < 5; col++) {
-                int x = offsetX + col * cellSize;
-                int y = offsetY + row * cellSize;
-                BingoItem item = card.getItem(row, col);
-                boolean completed = card.isCompleted(row, col);
+    public boolean hasWon() {
+        return checkRows() || checkColumns() || checkDiagonals();
+    }
 
-                byte bgColor = completed ? (byte) 28 : (byte) 8;
-                for (int dx = 1; dx < cellSize - 1; dx++)
-                    for (int dy = 1; dy < cellSize - 1; dy++)
-                        canvas.setPixel(x + dx, y + dy, bgColor);
+    private boolean checkRows() {
+        for (int r = 0; r < SIZE; r++) {
+            boolean full = true;
+            for (int c = 0; c < SIZE; c++) if (!completed[r][c]) { full = false; break; }
+            if (full) return true;
+        }
+        return false;
+    }
 
-                for (int dx = 0; dx < cellSize; dx++) {
-                    canvas.setPixel(x + dx, y, (byte) 119);
-                    canvas.setPixel(x + dx, y + cellSize - 1, (byte) 119);
-                }
-                for (int dy = 0; dy < cellSize; dy++) {
-                    canvas.setPixel(x, y + dy, (byte) 119);
-                    canvas.setPixel(x + cellSize - 1, y + dy, (byte) 119);
-                }
+    private boolean checkColumns() {
+        for (int c = 0; c < SIZE; c++) {
+            boolean full = true;
+            for (int r = 0; r < SIZE; r++) if (!completed[r][c]) { full = false; break; }
+            if (full) return true;
+        }
+        return false;
+    }
 
-                if (item != null) {
-                    BufferedImage texture = TextureLoader.getTexture(item.getMaterial());
-                    if (texture != null) {
-                        canvas.drawImage(x + 4, y + 4, texture);
-                    } else {
-                        byte c = diffColor(item.getDifficulty());
-                        for (int dx = 4; dx < cellSize - 4; dx++)
-                            for (int dy = 4; dy < cellSize - 4; dy++)
-                                canvas.setPixel(x + dx, y + dy, c);
-                    }
+    private boolean checkDiagonals() {
+        boolean main = true;
+        for (int i = 0; i < SIZE; i++) if (!completed[i][i]) { main = false; break; }
+        if (main) return true;
+        boolean anti = true;
+        for (int i = 0; i < SIZE; i++) if (!completed[i][SIZE - 1 - i]) { anti = false; break; }
+        return anti;
+    }
 
-                    if (completed) {
-                        canvas.setPixel(x + 2, y + 5, (byte) 34);
-                        canvas.setPixel(x + 3, y + 6, (byte) 34);
-                        canvas.setPixel(x + 4, y + 5, (byte) 34);
-                        canvas.setPixel(x + 5, y + 4, (byte) 34);
-                        canvas.setPixel(x + 6, y + 3, (byte) 34);
-                    }
-                }
+    public boolean updateFromInventory(java.util.Set<org.bukkit.Material> teamInventory) {
+        boolean changed = false;
+        for (int r = 0; r < SIZE; r++) {
+            for (int c = 0; c < SIZE; c++) {
+                BingoItem item = items[r][c];
+                if (item == null) continue;
+                boolean nowHas = teamInventory.contains(item.getMaterial());
+                if (setCompleted(r, c, nowHas)) changed = true;
             }
         }
-
-        canvas.drawText(38, 1, MinecraftFont.Font, "§fBINGO");
-    }
-
-    private byte diffColor(int diff) {
-        return switch (diff) {
-            case 1 -> (byte) 34;
-            case 2 -> (byte) 50;
-            case 3 -> (byte) 18;
-            case 4 -> (byte) 2;
-            default -> (byte) 8;
-        };
+        return changed;
     }
 }
