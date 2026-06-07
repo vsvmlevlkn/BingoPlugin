@@ -5,7 +5,9 @@ import com.bingo.listeners.InventoryListener;
 import com.bingo.listeners.PlayerListener;
 import com.bingo.managers.GameManager;
 import com.bingo.managers.TeamManager;
+import com.bingo.utils.TextureLoader;
 import org.bukkit.plugin.java.JavaPlugin;
+
 public class BingoPlugin extends JavaPlugin {
 
     private static BingoPlugin instance;
@@ -17,6 +19,7 @@ public class BingoPlugin extends JavaPlugin {
         instance = this;
 
         saveDefaultConfig();
+        TextureLoader.load(new java.io.File("."));
 
         this.teamManager = new TeamManager(this);
         this.gameManager = new GameManager(this);
@@ -35,7 +38,7 @@ public class BingoPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        if (gameManager != null && gameManager.isGameRunning()) {
+        if (gameManager != null && gameManager.isRunning()) {
             gameManager.stopGame();
         }
         getLogger().info("BingoPlugin disabled.");
@@ -52,5 +55,4 @@ public class BingoPlugin extends JavaPlugin {
     public TeamManager getTeamManager() {
         return teamManager;
     }
-
 }
