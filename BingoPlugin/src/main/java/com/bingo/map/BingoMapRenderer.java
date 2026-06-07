@@ -41,9 +41,9 @@ public class BingoMapRenderer extends MapRenderer {
                 int x = offsetX + col * cellSize;
                 int y = offsetY + row * cellSize;
                 BingoItem item = card.getItem(row, col);
-                boolean checked = card.isChecked(row, col);
+                boolean completed = card.isCompleted(row, col);
 
-                byte bgColor = checked ? (byte) 28 : (byte) 8;
+                byte bgColor = completed ? (byte) 28 : (byte) 8;
                 for (int dx = 1; dx < cellSize - 1; dx++)
                     for (int dy = 1; dy < cellSize - 1; dy++)
                         canvas.setPixel(x + dx, y + dy, bgColor);
@@ -68,7 +68,7 @@ public class BingoMapRenderer extends MapRenderer {
                                 canvas.setPixel(x + dx, y + dy, c);
                     }
 
-                    if (checked) {
+                    if (completed) {
                         canvas.setPixel(x + 2, y + 5, (byte) 34);
                         canvas.setPixel(x + 3, y + 6, (byte) 34);
                         canvas.setPixel(x + 4, y + 5, (byte) 34);
